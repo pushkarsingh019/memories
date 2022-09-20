@@ -1,30 +1,11 @@
 import React from "react";
 
-// importing material ui components
-import {Container, AppBar, Typography, Grow, Grid} from "@material-ui/core";
-
-import memories from "../src/images/memories.png";
-
-function App(){
-
+export default function App(){
     return(
-
-        <Container maxWidth="lg" >
-            <AppBar position="static" color="inherit">
-                <Typography variant="h2" align="center">Memories</Typography>
-                <img src="{memories}" alt="memories" height="60" />
-            </AppBar>
-            <Grow in>
-                <Container>
-                    <Grid>
-
-                    </Grid>
-                </Container>
-            </Grow>
-        </Container>
-
-        
+        <div style={{padding : "100px"}} className="App">
+            <h1>Memories App</h1>
+            <p>This is a small mern stack application I am building by following a tutorial. The app is far from complete, but since I believe in GTFOL(GET THE FUCK OFF LOCALHOST) , I am deploying this unfinished version.</p>
+            <a href="https://pushkarsingh.vercel.app">Pushkar Singh's Website</a>
+        </div>
     )
-}
-
-export default App;
+};
