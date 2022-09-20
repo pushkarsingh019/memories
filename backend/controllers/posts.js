@@ -10,5 +10,19 @@ export const getPosts =  async (req, res) => {
 }
 
 export const createPost = (req, res) => {
-    res.status(200).json({message : "Create Post Route is set up"})
+    let {title, message, creator, tags} = req.body;
+    tags = tags.split(",");
+    let newPost = new postMessage({
+        title,
+        message,
+        creator,
+        tags
+    }); 
+    try {
+        newPost.save();
+        res.status(200).json(newPost);
+    } catch (error) {
+        console.log(error);
+        res.status(404).json({message : error.message});
+    }
 }
