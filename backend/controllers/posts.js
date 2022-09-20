@@ -1,15 +1,14 @@
 import postMessage from "../models/postModels.js";
 
-export const getPosts =  (req, res) => {
+export const getPosts =  async (req, res) => {
     try {
-        const posts =  postMessage.find();
-        // console.log(posts);
-        res.send("This is the finding the posts route");
+        const posts =  await postMessage.find();
+        res.status(200).json(posts);
     } catch (error) {
         res.status(404).json({message : error.message});
     }
 }
 
 export const createPost = (req, res) => {
-    res.send("CREATE POST");
+    res.status(200).json({message : "Create Post Route is set up"})
 }

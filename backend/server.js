@@ -6,6 +6,7 @@ import mongoose from "mongoose";
 const app = express();
 const PORT = process.env.PORT || 5000;
 
+// Getting the main app
 app.get('/', (req, res) => {
     res.send("Api is up and running");
 })
