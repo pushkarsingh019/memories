@@ -2,12 +2,10 @@ import axios from "axios";
 
 export const getPosts = () => async(dispatch) => {
     try {
-        console.log("Inside the get post action");
-        const response = axios.get('http://localhost:5000/posts');
-        console.log(response);
+        const {data} = await axios.get('http://localhost:5000/posts');
         dispatch({
             type : 'FETCH',
-            payload : response,
+            payload : data,
         });
     } catch (error) {
         console.log(error.message);

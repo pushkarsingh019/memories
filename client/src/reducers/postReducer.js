@@ -1,7 +1,7 @@
 const postReducer = (posts = [], action) => {
     switch(action.type){
         case 'FETCH' : 
-            return posts = action.payload;
+            return {status : "Fetching Done", posts : action.payload};
         case 'CREATE' : 
             return posts;
         default : 

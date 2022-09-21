@@ -1,10 +1,12 @@
 import React from "react";
-import {useSelector} from "react-redux"
 
-function Post({title}){
-    const posts = useSelector((state) => state.posts);
+function Post({title, message, creator}){
     return(
-        <h3>{title}</h3>
+        <div className="post-card">
+            <h2 style={{fontWeight : 800}}>{title}</h2>
+            <small>{creator}</small>
+            <p>{message}</p>
+        </div>
     )
 };
 

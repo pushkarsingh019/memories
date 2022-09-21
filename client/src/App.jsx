@@ -13,13 +13,27 @@ import "./styles.css";
 // importing redux actions
 import {getPosts} from "./actions/postActions";
 
+function Loading(){
+    return(
+        <p>loading...</p>
+    )
+};
+
 function HeroSection(){
+
+    const dispatch = useDispatch();
+    useEffect(() => {
+        dispatch(getPosts());
+    },[dispatch]);
+
+    const {posts} = useSelector((state) => state.posts);
+
     return(
         <section className="hero-section">
             <div className="post-section">
-                <Post />
-                <Post />
-                <Post />    
+                {!posts ? <Loading /> : posts.map((post) => {
+                    return <Post key={post._id} title={post.title} message={post.message} creator={post.creator} />
+                })}
             </div>
             <div className="form-section">
                 <Form />
