@@ -14,13 +14,15 @@ app.get('/', (req, res) => {
 // importing routes
 import postRoutes from "./routes/posts.js";
 
-// setting up the routes
-app.use('/posts', postRoutes);
+
 
 // setting up middlewares
 app.use(bodyParser.json({limit : "30mb", extended : true}));
 app.use(bodyParser.urlencoded({limit : "30mb", extended : true}));
 app.use(cors());
+
+// setting up the routes
+app.use('/posts', postRoutes);
 
 
 // setting up database

@@ -1,11 +1,39 @@
 import React from "react";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux"
+
+// importing components
+import Navbar from "./components/Navbar";
+import Form from "./components/Form";
+import Post from "./components/Post";
+
+// importing styles
+import "./styles.css";
+
+// importing redux actions
+import {getPosts} from "./actions/postActions";
+
+function HeroSection(){
+    return(
+        <section className="hero-section">
+            <div className="post-section">
+                <Post />
+                <Post />
+                <Post />    
+            </div>
+            <div className="form-section">
+                <Form />
+            </div>
+        </section>
+    )
+}
 
 export default function App(){
+
     return(
-        <div style={{padding : "100px"}} className="App">
-            <h1>Memories App</h1>
-            <p>This is a small mern stack application I am building by following a tutorial. The app is far from complete, but since I believe in GTFOL(GET THE FUCK OFF LOCALHOST) , I am deploying this unfinished version.</p>
-            <a href="https://pushkarsingh.vercel.app">Pushkar Singh's Website</a>
+        <div className="App">
+            <Navbar />
+            <HeroSection />
         </div>
     )
 };

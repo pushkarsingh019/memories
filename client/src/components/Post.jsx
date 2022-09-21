@@ -1,8 +1,10 @@
 import React from "react";
+import {useSelector} from "react-redux"
 
-function Post(){
+function Post({title}){
+    const posts = useSelector((state) => state.posts);
     return(
-        <h3>Post Component</h3>
+        <h3>{title}</h3>
     )
 };
 
