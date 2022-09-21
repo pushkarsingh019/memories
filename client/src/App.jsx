@@ -32,7 +32,7 @@ function HeroSection(){
         <section className="hero-section">
             <div className="post-section">
                 {!posts ? <Loading /> : posts.map((post) => {
-                    return <Post key={post._id} title={post.title} message={post.message} creator={post.creator} />
+                    return <Post key={post._id} title={post.title} message={post.message} creator={post.creator} tags={post.tags} likes={post.likes} createdAt={post.createdAt} id={post._id} />
                 })}
             </div>
             <div className="form-section">

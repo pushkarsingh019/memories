@@ -1,11 +1,96 @@
 @import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
 
+:root{
+    --primary-color : #B1B2FF;
+    --secondary-color : #AAC4FF;
+    --third-color : #D2DAFF;
+    --forth-color : #EEF1FF;
+    --dark-color : #16213E;
+}
+
 * {
     font-family: 'Lato', sans-serif;
+    padding: 0;
+    margin: 0;
+    /* border: 1px solid red; */
+}
+
+body {
+    background-color: var(--forth-color);
+}
+
+/* Navbar */
+.navbar {
+    padding: 30px 45px;
+    background-color: var(--primary-color);
+    color: var(--dark-color);
+}
+.navbar h2 {
+    font-size: 2rem;
+    font-weight: 900;
+}
+
+/* button */
+.button {
+    padding: 10px 12px;
+    border-radius: 0.3rem;
+    border: 0.5px solid;
+    margin-right: 2rem;
+};
+
+.button {
+    background-color: var(--secondary-color);
+    color: white;
 }
 
 /* hero section */
 .hero-section {
     display: grid;
     grid-template-columns: 2fr 1fr  ;
+    column-gap: 2rem;
+    padding: 30px 45px;
+    margin-top: 2.5rem;
+}
+
+/* form section */
+form input {
+    padding: 10px 12px;
+    margin: 1rem 0rem;
+    width: 80%;
+}
+
+/* pos section */
+.post-section {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 1.5rem;
+    row-gap: 3rem;
+}
+
+/* post component */
+.post-card {
+    display: flex;
+    flex-direction: column;
+    align-content: flex-start;
+    justify-content: space-around;
+    background-color: white;
+    padding: 20px 25px;
+    border-radius: 12px;
+    height: 250px
+};
+
+.post-card h2 {
+    font-weight: 900;
+    font-size: 1.2rem;
+}
+
+.post-card .internal-section {
+    color: #16213E80;
+    display: flex;
+    justify-content: space-between;
+}
+
+.post-card .cta-section {
+    display: inline-flex;
+    justify-content: space-between;
 }

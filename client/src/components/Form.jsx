@@ -29,16 +29,16 @@ function Form(){
     return(
         <form onSubmit={formHandler}>
             <h2>Create A Memory</h2>
-            <input type="text" placeholder="Title" onChange={(event) => setTitle(event.target.value)} />
+            <input type="text" placeholder="Title" required onChange={(event) => setTitle(event.target.value)} />
             <br />
-            <input type="text" placeholder="Message" onChange={(event) => setMessage(event.target.value)} />
+            <input type="text" placeholder="Message" required onChange={(event) => setMessage(event.target.value)} />
             <br />
-            <input type="text" placeholder="Creator" onChange={(event) => setCreator(event.target.value)} />
+            <input type="text" placeholder="Creator" required onChange={(event) => setCreator(event.target.value)} />
             <br />
             <input type="text" placeholder="Tags" onChange={(event) => setTags(event.target.value)} />
             <br />
-            <button type="submit">Create Memory</button>
-            <button>Clear</button>
+            <button className="button" type="submit">Create Memory</button>
+            <button className="button">Clear</button>
         </form>
     )
 };
