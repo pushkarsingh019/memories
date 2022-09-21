@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const backendUrl = process.env.BACKEND_URl || "http://localhost:5000";
+const backendUrl = "https://memories-backend-zeta.vercel.app";
 
 export const getPosts = () => async(dispatch) => {
     try {
@@ -17,7 +17,7 @@ export const getPosts = () => async(dispatch) => {
 
 export const createPost = (post) => async(dispatch) => {
     try {
-        const {data} = axios.post(`${backendUrl}/posts/create`, post);
+        const {data} = axios.post(`${backendUrl}/posts`, post);
         console.log(post);
         dispatch({
             type : 'CREATE',
