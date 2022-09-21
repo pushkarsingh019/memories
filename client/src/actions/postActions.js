@@ -1,8 +1,10 @@
 import axios from "axios";
 
+const backendUrl = "https://memories-backend-zeta.vercel.app";
+
 export const getPosts = () => async(dispatch) => {
     try {
-        const {data} = await axios.get('http://localhost:5000/posts');
+        const {data} = await axios.get(`${backendUrl}/posts`);
         dispatch({
             type : 'FETCH',
             payload : data,
@@ -15,7 +17,7 @@ export const getPosts = () => async(dispatch) => {
 
 export const createPost = (post) => async(dispatch) => {
     try {
-        const {data} = axios.post('http://localhost:5000/posts/create', post);
+        const {data} = axios.post(`${backendUrl}/posts/create`, post);
         console.log(post);
         dispatch({
             type : 'CREATE',
