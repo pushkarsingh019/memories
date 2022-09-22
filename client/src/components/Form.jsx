@@ -23,6 +23,10 @@ function Form(){
         };
 
         dispatch(createPost(post));
+
+        setTimeout(function reload(){
+            window.location.reload()
+        },1000)
     }
 
 

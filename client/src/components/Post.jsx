@@ -10,6 +10,7 @@ function Post({title, message, creator, tags, likes, createdAt, id}){
         console.log(`post to be deleted -> ${id}`)
         console.log(`${backendUrl}/posts/${id}`);
         await axios.delete(`${backendUrl}/posts/${id}`);
+        window.location.reload();
     }
 
     return(
@@ -22,7 +23,7 @@ function Post({title, message, creator, tags, likes, createdAt, id}){
             <p>{message}</p>
             <p>{creator}</p>
             <div className="cta-section">
-                <button className="button">Like</button>
+                <button className="button">{likes} Like</button>
                 <button className="button" onClick={deletePost}>Delete</button>
             </div>
         </div>
