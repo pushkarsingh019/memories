@@ -3,6 +3,7 @@ import bodyParser from "body-parser";
 import cors from "cors";
 import mongoose from "mongoose";
 
+const MONGO_URI = "mongodb+srv://pushkarsingh019:72087protecteD%4019_database@cluster0.a6cxzjv.mongodb.net/memories";
 const app = express();
 const PORT = process.env.PORT || 5000;
 
@@ -26,7 +27,7 @@ app.use('/posts', postRoutes);
 
 
 // setting up database
-mongoose.connect("mongodb+srv://pushkarsingh019:72087protecteD%4019_database@cluster0.a6cxzjv.mongodb.net/memories")
+mongoose.connect("mongodb://localhost/memories")
 .then(() => app.listen(PORT, console.log(`Server up and running on port ${PORT}`)))
 .catch((error) => console.log(error.message));
 
