@@ -5,6 +5,9 @@ import {backendUrl} from "../actions/postActions"
 
 function Post({title, message, creator, tags, likes, createdAt, id}){
 
+    function editHandler(){
+        console.table(`edit -> ${id}`);
+    }
 
     async function deletePost(){
         console.log(`post to be deleted -> ${id}`)
@@ -15,7 +18,10 @@ function Post({title, message, creator, tags, likes, createdAt, id}){
 
     return(
         <div className="post-card">
-            <h2>{title}</h2>
+            <div className="title-section">
+                <h2>{title}</h2>
+                <small onClick={editHandler} className="edit-button">◦ ◦ ◦</small>
+            </div>
             <div className="internal-section">
                 <small>{`#${tags}`}</small>
                 <small>{moment(createdAt).fromNow()}</small>

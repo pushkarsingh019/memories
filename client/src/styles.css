@@ -95,3 +95,11 @@ form input {
     justify-content: space-between;
     align-content: center;
 }
+.post-card .title-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center
+};
+.title-section .edit-button {
+    text-decoration: underline;
+}
