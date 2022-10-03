@@ -5,8 +5,8 @@ import {backendUrl} from "../actions/postActions"
 
 function Post({title, message, creator, tags, likes, createdAt, id}){
 
-    function editHandler(){
-        console.table(`edit -> ${id}`);
+    async function editHandler(){
+       await axios.put(`${backendUrl}/posts/${id}`, {new : "new idea"}) 
     }
 
     async function deletePost(){
