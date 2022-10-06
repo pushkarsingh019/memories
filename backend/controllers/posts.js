@@ -20,6 +20,7 @@ export const createPost = (req, res) => {
     }); 
     try {
         newPost.save();
+        console.log(newPost)
         res.status(200).json(newPost);
     } catch (error) {
         console.log(error);

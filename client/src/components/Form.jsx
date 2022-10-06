@@ -1,17 +1,13 @@
 import React, {useState} from "react";
-import {useDispatch} from "react-redux"
-import {  createPost } from "../actions/postActions";
 
 // form schema -> create a memory -> title -> message -> creator -> tags -> submit -> clear
 
-function Form(){
+function Form({formData}){
 
     const [title, setTitle] = useState("");
     const [message, setMessage] = useState("");
     const [creator, setCreator] = useState("");
     const [tags, setTags] = useState("");
-
-    const dispatch = useDispatch();
 
     function formHandler(event){
         event.preventDefault();
@@ -22,11 +18,8 @@ function Form(){
             tags
         };
 
-        dispatch(createPost(post));
+        formData(post)
 
-        setTimeout(function reload(){
-            window.location.reload(false)
-        },1000)
     }
 
 

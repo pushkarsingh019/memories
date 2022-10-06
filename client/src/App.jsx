@@ -11,7 +11,7 @@ import Post from "./components/Post";
 import "./styles.css";
 
 // importing redux actions
-import {getPosts} from "./actions/postActions";
+import {getPosts, createPost} from "./actions/postActions";
 
 function Loading(){
     return(
@@ -21,22 +21,27 @@ function Loading(){
 
 function HeroSection(){
 
+
     const dispatch = useDispatch();
+    let {postData} = useSelector((state) => state.posts);
+
     useEffect(() => {
         dispatch(getPosts());
-    },[dispatch]);
+    },[dispatch, postData]);
 
-    let {posts} = useSelector((state) => state.posts);
+    function formHandler(post){
+        dispatch(createPost(post));
+    }
 
     return(
         <section className="hero-section">
             <div className="post-section">
-                {!posts ? <Loading /> : posts.reverse().map((post) => {
+                {!postData ? <Loading /> : postData.reverse().map((post) => {
                     return <Post key={post._id} title={post.title} message={post.message} creator={post.creator} tags={post.tags} likes={post.likes} createdAt={post.createdAt} id={post._id} />
                 })}
             </div>
             <div className="form-section">
-                <Form />
+                <Form formData={formHandler} />
             </div>
         </section>
     )
