@@ -27,7 +27,7 @@ app.use('/posts', postRoutes);
 
 
 // setting up database
-mongoose.connect("mongodb://localhost/memories")
+mongoose.connect("mongodb://localhost/somethingunique")
 .then(() => app.listen(PORT, console.log(`Server up and running on port ${PORT}`)))
 .catch((error) => console.log(error.message));
 

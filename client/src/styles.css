@@ -6,6 +6,7 @@
     --third-color : #D2DAFF;
     --forth-color : #EEF1FF;
     --dark-color : #16213E;
+    --something : rgb(250,79,50);
 }
 
 * {
@@ -94,4 +95,12 @@ form input {
     display: inline-flex;
     justify-content: space-between;
     align-content: center;
+}
+.post-card .title-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center
+};
+.title-section .edit-button {
+    text-decoration: underline;
 }
