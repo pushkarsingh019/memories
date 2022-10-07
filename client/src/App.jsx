@@ -27,24 +27,23 @@ function HeroSection(){
 
     const dispatch = useDispatch();
     let {postData} = useSelector((state) => state.posts);
-    const [stateDependency, setStateDependency] = useState([postData]);
+    const [stateDependency, setStateDependency] = useState(postData);
     const [parent] = useAutoAnimate();
 
     useEffect(() => {
-        console.log("component rendered");
         dispatch(getPosts());
+        console.log(stateDependency)
     }, [dispatch, stateDependency])
 
 
-    function formHandler(post){
-        dispatch(createPost(post));
-        setStateDependency([postData]);
+    async function formHandler(post){
+        await dispatch(createPost(post));
+        setStateDependency(postData);
     };
 
-    function deletePostHandler(id){
-        console.log(`post id to be deleted -> ${id}`);
-        dispatch(deletePost(id));
-        setStateDependency([postData])
+    async function deletePostHandler(id){
+        await dispatch(deletePost(id));
+        setStateDependency(postData)
     }
 
     return(
