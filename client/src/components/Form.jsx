@@ -19,9 +19,15 @@ function Form({formData}){
         };
 
         formData(post)
-
+        clearForm();
     }
 
+    function clearForm(){
+        setTitle("");
+        setMessage("");
+        setCreator("");
+        setTags("");
+    }
 
     return(
         <form onSubmit={formHandler}>
@@ -35,7 +41,7 @@ function Form({formData}){
             <input value={tags} type="text" placeholder="Tags" onChange={(event) => setTags(event.target.value)} />
             <br />
             <button className="button" type="submit">Create Memory</button>
-            <button className="button">Clear</button>
+            <button className="button" onClick={() => clearForm()}>Clear</button>
         </form>
     )
 };

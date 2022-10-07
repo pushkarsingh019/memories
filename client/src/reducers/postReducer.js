@@ -3,7 +3,15 @@ const postReducer = (posts = [], action) => {
         case 'FETCH' : 
             return {status : "Fetching Done", postData : action.payload};
         case 'CREATE' : 
-            return posts.postData.push(action.payload);
+            console.log("state before update");
+            console.log(posts);
+            posts.postData.push(action.payload);
+            console.log("state after update");
+            console.log(posts)
+            return posts
+        case "DELETE" : 
+            console.log(action.payload)
+            return posts;
         default : 
             return posts
     };

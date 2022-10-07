@@ -28,3 +28,16 @@ export const createPost = (post) => async(dispatch) => {
         process.exit(1);
     }
 };
+
+
+export const deletePost = (id) => async(dispatch) => {
+    try {
+        let response = await axios.delete(`${backendUrl}/posts/${id}`);
+        dispatch({
+            type : "DELETE",
+            payload : response
+        });
+    } catch (error) {
+        console.log(error.message);
+    }
+}
