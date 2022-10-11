@@ -39,11 +39,10 @@ export const deletePost = async (req, res) => {
 
 export const updatePost = async(req, res) => {
     const id = req.params.id;
-    // const {post} = req.body;
-    console.log(req.body);
+    const {post} = req.body;
     try {
-        // const message = await postMessage.updateOne({_id : id}, updatedPost)
-        res.status(200).send("cool")
+        const message = await postMessage.updateOne({_id : id}, post)
+        res.status(200).json({message});
     } catch (error) {
         res.status(500).send(error.message);
     }

@@ -40,4 +40,18 @@ export const deletePost = (id) => async(dispatch) => {
     } catch (error) {
         console.log(error.message);
     }
-}
+};
+
+export const updatePostHandler = (post) => async(dispatch) => {
+    console.log(post)
+    try{
+        let response = await axios.put(`${backendUrl}/posts/${post._id}`, {post : post});
+        dispatch({
+            type : "EDIT",
+            payload : response
+        });
+    }
+    catch(error){
+        console.log(error.message)
+    }
+};
