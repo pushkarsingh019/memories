@@ -12,6 +12,9 @@ const postReducer = (posts = [], action) => {
         case "DELETE" : 
             console.log(action.payload)
             return posts;
+        case "EDIT" : 
+            console.log(action.payload);
+            return posts;
         default : 
             return posts
     };

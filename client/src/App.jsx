@@ -13,7 +13,7 @@ import Post from "./components/Post";
 import "./styles.css";
 
 // importing redux actions
-import {getPosts, createPost, deletePost} from "./actions/postActions";
+import {getPosts, createPost, deletePost, updatePostHandler} from "./actions/postActions";
 
 
 function Loading(){
@@ -28,6 +28,8 @@ function HeroSection(){
     const dispatch = useDispatch();
     let {postData} = useSelector((state) => state.posts);
     const [stateDependency, setStateDependency] = useState(postData);
+    const [isEditing, setIsEditing] = useState(false)
+    const [editPost, setEditPost] = useState({});
     const [parent] = useAutoAnimate();
 
     useEffect(() => {
@@ -36,7 +38,8 @@ function HeroSection(){
     }, [dispatch, stateDependency])
 
 
-    async function formHandler(post){
+    async function formHandler(post, state){
+        console.log(`state -> ${state}`);
         await dispatch(createPost(post));
         setStateDependency(postData);
     };
@@ -46,19 +49,30 @@ function HeroSection(){
         setStateDependency(postData)
     }
 
+    async function editCommunication(post){
+        setIsEditing(true);
+        setEditPost(post);
+    };
+
+    async function editPostHandler(post){
+        await dispatch(updatePostHandler(post));
+        setIsEditing(false);
+        setStateDependency(postData);
+    }
+
     return(
         <section className="hero-section">
             <div className="post-section" ref={parent}>
                 {!postData ? <Loading /> : postData.reverse().map((post) => {
-                    return <Post key={post._id} title={post.title} message={post.message} creator={post.creator} tags={post.tags} likes={post.likes} createdAt={post.createdAt} id={post._id} onDelete={deletePostHandler} />
+                    return <Post onEdit={editCommunication} key={post._id} title={post.title} message={post.message} creator={post.creator} tags={post.tags} likes={post.likes} createdAt={post.createdAt} id={post._id} onDelete={deletePostHandler} post={post} />
                 })}
             </div>
             <div className="form-section">
-                <Form formData={formHandler} />
+                <Form editingState={isEditing} formData={formHandler} editPost={editPost} onChange={editPostHandler} />
             </div>
         </section>
     )
-}
+} 
 
 export default function App(){
 

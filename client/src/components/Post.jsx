@@ -1,18 +1,11 @@
 import React from "react";
 import moment from "moment"
-import axios from "axios";
-import {backendUrl} from "../actions/postActions"
 
-function Post({title, message, creator, tags, likes, createdAt, id, onDelete}){
+function Post({title, message, creator, tags, likes, createdAt, id, onDelete, onEdit, post}){
 
-    async function editHandler(){
-       await axios.put(`${backendUrl}/posts/${id}`, {new : "new idea"}) 
+    function editHandler(){
+        onEdit(post);
     }
-
-    // async function deletePost(){
-    //     await axios.delete(`${backendUrl}/posts/${id}`);
-    //     window.location.reload();
-    // }
 
     return(
         <div className="post-card">
