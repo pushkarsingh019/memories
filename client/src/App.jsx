@@ -2,7 +2,8 @@ import React from "react";
 import { useState } from "react";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useAutoAnimate } from '@formkit/auto-animate/react'
+import { useAutoAnimate } from '@formkit/auto-animate/react';
+
 
 // importing components
 import Navbar from "./components/Navbar";
@@ -14,13 +15,16 @@ import "./styles.css";
 
 // importing redux actions
 import {getPosts, createPost, deletePost, updatePostHandler} from "./actions/postActions";
-
+import {authenticateUser} from "./actions/authActions";
 
 function Loading(){
     return(
         <p>loading...</p>
     )
 };
+
+
+// Global functions, variables and state
 
 function HeroSection(){
 
@@ -34,7 +38,6 @@ function HeroSection(){
 
     useEffect(() => {
         dispatch(getPosts());
-        console.log(stateDependency)
     }, [dispatch, stateDependency])
 
 
@@ -58,7 +61,7 @@ function HeroSection(){
         await dispatch(updatePostHandler(post));
         setIsEditing(false);
         setStateDependency(postData);
-    }
+    };
 
     return(
         <section className="hero-section">
@@ -74,11 +77,18 @@ function HeroSection(){
     )
 } 
 
+
 export default function App(){
+
+    const dispatch = useDispatch();
+
+    function loginHandler(token){
+        dispatch(authenticateUser({token : token}));
+    }
 
     return(
         <div className="App">
-            <Navbar />
+            <Navbar loginHandler={loginHandler}/>
             <HeroSection />
         </div>
     )

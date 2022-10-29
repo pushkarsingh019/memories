@@ -1,7 +1,6 @@
 import axios from "axios";
 
-// export const backendUrl = "https://memories-backend-zeta.vercel.app";
-export const backendUrl = "http://localhost:5000"        
+import { backendUrl } from "../config/backend";   
 
 export const getPosts = () => async(dispatch) => {
     try {

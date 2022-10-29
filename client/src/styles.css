@@ -25,6 +25,8 @@ body {
     padding: 30px 45px;
     background-color: var(--primary-color);
     color: var(--dark-color);
+    display: flex;
+    justify-content: space-between;
 }
 .navbar h2 {
     font-size: 2rem;
