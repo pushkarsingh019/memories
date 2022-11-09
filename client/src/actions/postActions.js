@@ -1,7 +1,6 @@
 import axios from "axios";
 
-// export const backendUrl = "https://memories-backend-zeta.vercel.app";
-export const backendUrl = "http://localhost:5000"        
+import { backendUrl } from "../config/backend";   
 
 export const getPosts = () => async(dispatch) => {
     try {
@@ -43,7 +42,6 @@ export const deletePost = (id) => async(dispatch) => {
 };
 
 export const updatePostHandler = (post) => async(dispatch) => {
-    console.log(post)
     try{
         let response = await axios.put(`${backendUrl}/posts/${post._id}`, {post : post});
         dispatch({
