@@ -42,7 +42,6 @@ export const deletePost = (id) => async(dispatch) => {
 };
 
 export const updatePostHandler = (post) => async(dispatch) => {
-    console.log(post)
     try{
         let response = await axios.put(`${backendUrl}/posts/${post._id}`, {post : post});
         dispatch({

@@ -1,12 +1,12 @@
 
-async function authReducer(state, action){
+function authReducer(userInfo = {}, action){
     switch (action.type) {
         case "AUTHENTICATE":
-            return { state : action.payload }
+            return {userInfo : action.payload}
         case "AUTHORISE":
-            return state;
+            return userInfo
         default:
-            break;
+            return userInfo;
     }
 };
 

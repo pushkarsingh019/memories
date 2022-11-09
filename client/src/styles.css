@@ -27,6 +27,7 @@ body {
     color: var(--dark-color);
     display: flex;
     justify-content: space-between;
+    align-items: center;
 }
 .navbar h2 {
     font-size: 2rem;
@@ -105,4 +106,36 @@ form input {
 };
 .title-section .edit-button {
     text-decoration: underline;
+}
+
+/* profile section on navbar */
+.profile {
+    display: flex;
+    align-items: center;
+    transition: ease-in-out;
+    color: var(--dark-color);
+}
+
+.profile-pic {
+    height: 30px;
+    border-radius: 50%;
+}
+
+.profile-name {
+    padding-left: 0.5rem;
+}
+
+.profile :hover {
+    text-decoration: underline;
+    cursor:zoom-in;
+}
+
+/* profile page */
+.section {
+    padding: 100px;
+}
+
+.section .link {
+    color: black;
+    text-decoration: none;
 }

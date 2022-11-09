@@ -10,7 +10,13 @@ const reducers = combineReducers({
     user : authReducer
 });
 
-const store = createStore(reducers, compose(applyMiddleware(thunk)));
+const localUserDetails = JSON.parse(localStorage.getItem("user"));
+
+const initalState = {
+    user :  localUserDetails ? localUserDetails : null,
+}
+
+const store = createStore(reducers,initalState,  compose(applyMiddleware(thunk)));
 
 
 

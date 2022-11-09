@@ -17,6 +17,12 @@ import "./styles.css";
 import {getPosts, createPost, deletePost, updatePostHandler} from "./actions/postActions";
 import {authenticateUser} from "./actions/authActions";
 
+// importing react router components
+import {BrowserRouter, Routes, Route} from "react-router-dom"
+
+// importing screens
+import ProfileScreen from "./screens/ProfileScreen";
+
 function Loading(){
     return(
         <p>loading...</p>
@@ -75,21 +81,36 @@ function HeroSection(){
             </div>
         </section>
     )
-} 
+};
 
-
-export default function App(){
-
+function HomeScreen(){
     const dispatch = useDispatch();
+    const [auth, setAuth] = useState(false)
 
     function loginHandler(token){
         dispatch(authenticateUser({token : token}));
+    };
+
+    function authHandler(authValue){
+        setAuth(authValue)
     }
 
     return(
         <div className="App">
-            <Navbar loginHandler={loginHandler}/>
+            <Navbar loginHandler={loginHandler} authState={authHandler} auth={auth}/>
             <HeroSection />
         </div>
+    )
+};
+
+
+export default function App(){
+    return(
+        <BrowserRouter>
+            <Routes>
+                <Route path="/" element={<HomeScreen />} />
+                <Route path="/profile" element={<ProfileScreen />} />
+            </Routes>
+        </BrowserRouter>
     )
 };
